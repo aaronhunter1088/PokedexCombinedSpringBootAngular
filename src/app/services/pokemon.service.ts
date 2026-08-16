@@ -14,6 +14,7 @@ export class PokemonService
     allPokemon: any[] = [];
     showGifs: boolean = false;
     chosenType: string = 'none';
+    tileColorParam: string = '';
     hostUrl: string = environment.hostUrl;
 
     constructor(protected http: HttpClient) {
@@ -220,6 +221,14 @@ export class PokemonService
 
     getChosenType(): string {
         return this.chosenType;
+    }
+
+    saveTileColorParam(tileColorParam: string) {
+        this.tileColorParam = tileColorParam;
+    }
+
+    getTileColorParam(): string {
+        return this.tileColorParam;
     }
 
     getEvolutionsMap() {

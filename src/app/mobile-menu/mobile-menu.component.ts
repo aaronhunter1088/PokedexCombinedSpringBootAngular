@@ -21,6 +21,7 @@ export class MobileMenuComponent implements OnInit {
     @Input() showGifs: boolean = this.pokemonService.getShowGifs();
     @Input() currentDarkMode: boolean = this.darkModeService.isDarkMode();
     @Input() pokemonMap: Map<number, any> = new Map<number, any>();
+    @Input() tileColorParam: string = '';
     @Output() showGifsChange = new EventEmitter<boolean>();
     @Output() currentDarkModeChange = new EventEmitter<boolean>();
     @Output() pokemonMapChange = new EventEmitter<Map<number, any>>();
@@ -45,6 +46,9 @@ export class MobileMenuComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        if (!this.tileColorParam) {
+            this.tileColorParam = this.pokemonService.getTileColorParam();
+        }
     }
 
     toggleMobileMenu() {
