@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Build Pokédex Combined with Angular and Spring Boot
-        run: npm run deployAngularAppForServer
+        run: npm run deployCombinedAppForServer
 
       - name: Upload Pokédex Combined with Angular and Spring Boot
         uses: appleboy/scp-action@v1
