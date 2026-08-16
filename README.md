@@ -1,14 +1,18 @@
-# PokedexApiUI
+# Pokédex Combined (Angular + Spring Boot)
+
+<img src="src/assets/images/combo-springboot-homepage.png" alt="Spring Boot Homepage" width="420" /> <img src="src/assets/images/combo-angular-homepage.png" alt="Angular Homepage" width="420" />
+
+[![Deploy Pokédex Combined with Angular and Spring Boot](https://github.com/aaronhunter1088/PokedexCombinedSpringBootAngular/actions/workflows/pokedex-combined-deploy.yml/badge.svg)](https://github.com/aaronhunter1088/PokedexCombinedSpringBootAngular/actions/workflows/pokedex-combined-deploy.yml)
 
 #### Versions
 
-- Angular Front End for PokedexApi v1.6.1
+- Angular Front End
+- Spring Boot Back End
 - Inception Year: 2024
-- Angular CLI: 20.3.13
-- Angular: 20.3.15
-- TypeScript: 5.8.3 (version check: npx tsc -v)
-- Node: 24.12.0
-- Package Manager: npm 11.6.2
+- Angular CLI: 20.x
+- TypeScript: 5.x (version check: npx tsc -v)
+- Node: 24.x (node -v)
+- Package Manager: npm 11.x (npm -v)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
 This project works specifically with the PokedexApi project. This is the front end
