@@ -65,6 +65,10 @@
     box-sizing: border-box;
 }
 
+.mobile-search-box input::placeholder {
+    color: #888;
+}
+
 .mobile-search-icon {
     position: absolute;
     right: 0;
