@@ -6,8 +6,7 @@
 
 #### Versions
 
-- Angular Front End
-- Spring Boot Back End
+- Angular Front End, Spring Boot Back End
 - Inception Year: 2024
 - Angular CLI: 20.x
 - TypeScript: 5.x (version check: npx tsc -v)
