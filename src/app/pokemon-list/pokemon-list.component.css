@@ -216,16 +216,17 @@ img {
         height: auto !important;
         min-height: 400px;
         padding: 15px;
+        font-size: 20px;
     }
 
     /* Adjust Pokemon card content for mobile */
-    .pokemon-grid .box #info h3 {
+    .info h2 {
         font-size: 14px;
         margin: 5px 0;
         line-height: 1.4;
     }
 
-    .pokemon-grid .box #nameAndId h3 {
+    #nameAndId h2 {
         font-size: 16px;
     }
 
