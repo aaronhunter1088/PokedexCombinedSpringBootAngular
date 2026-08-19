@@ -27,8 +27,8 @@
 }
 
 .back-to-landing-btn {
-    --search-shadow-color: darkred;
-    background-color: var(--search-shadow-color, darkred);
+    --search-shadow-color: gray;
+    background-color: var(--search-shadow-color, gray);
     color: white;
     border: none;
     padding: 10px 15px;
