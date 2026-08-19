@@ -41,7 +41,7 @@
 }
 
 .mobile-search-box {
-    --search-shadow-color: darkred;
+    --search-shadow-color: gray;
     position: relative;
     width: 100%;
     height: 55px;
