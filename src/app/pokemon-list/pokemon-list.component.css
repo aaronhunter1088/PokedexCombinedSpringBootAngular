@@ -1,4 +1,10 @@
 
+:host {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 #loadingOverlay {
     display: none;
     position: fixed;
@@ -10,6 +16,7 @@
     z-index: 9999;
     justify-content: center;
     align-items: center;
+    transition: background-color 2s ease, opacity 2s ease;
 }
 
 #loadingContent {
@@ -18,6 +25,7 @@
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 2s ease, color 2s ease, box-shadow 2s ease;
 }
 
 #loadingContent h2 {
@@ -51,6 +59,7 @@
     display: grid;
     grid-gap: 15px;
     padding: 20px 0;
+    /*grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));*/
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     width: 100%;
     box-sizing: border-box;
@@ -69,7 +78,7 @@ img {
 
 .icon {
     padding: 10px 15px;
-    background: dodgerblue;
+    /*background: dodgerblue;*/
     color: white;
     min-width: fit-content;
     text-align: center;
@@ -81,6 +90,51 @@ img {
 
 #name {
     cursor: pointer;
+}
+
+.input-box,
+.search-box {
+    --search-shadow-color: #76147D;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: width 0.5s ease, background-color 5s ease, box-shadow 5s ease, color 5s ease;
+    box-shadow: 0 0 20px 2px var(--search-shadow-color);
+}
+
+.input-box:hover,
+.search-box:hover {
+    width: 150px;
+}
+
+.input-box input,
+.search-box input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0 55px 0 15px;
+    background-color: transparent;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-icon,
+.search-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1a1a1a;
+    font-size: 1.3rem;
 }
 
 #info * {
@@ -97,8 +151,8 @@ img {
 }
  */
 .back-to-landing-btn {
-    --search-shadow-color: gray;
-    background-color: var(--search-shadow-color, gray);
+    --search-shadow-color: #76147D;
+    background-color: var(--search-shadow-color, #76147D);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -106,7 +160,7 @@ img {
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: background-color 2s ease, color 2s ease, transform 2s ease, box-shadow 2s ease;
     white-space: nowrap;
 }
 
@@ -129,6 +183,7 @@ img {
     flex-wrap: wrap;
     width: 100%;
     box-sizing: border-box;
+    transition: background-color 2s ease, color 2s ease, box-shadow 2s ease;
 }
 
 .desktop-controls .gif-preview-toggle-slot {
@@ -159,6 +214,7 @@ img {
     height: 50px;
     cursor: pointer;
     flex-shrink: 0;
+    transition: transform 2s ease, opacity 2s ease, filter 2s ease;
 }
 
 .desktop-controls .theme-toggle img {
@@ -168,7 +224,7 @@ img {
     width: 50px;
     height: 50px;
     object-fit: contain;
-    transition: transform 0.5s ease, opacity 0.3s ease;
+    transition: transform 2s ease, opacity 2s ease, filter 2s ease;
 }
 
 .desktop-controls .theme-toggle .sun {
@@ -197,73 +253,7 @@ img {
     transform: rotate(180deg) scale(1);
 }
 
-#name {
-    cursor: pointer;
-}
-
-.input-box {
-    --search-shadow-color: gray;
-    position: relative;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    overflow: hidden;
-    transition: 0.5s;
-    background-color: whitesmoke;
-    box-shadow: 0 0 20px 2px var(--search-shadow-color);
-}
-.search-box {
-    --search-shadow-color: gray;
-    position: relative;
-    width: 50px;
-    height: 50px;
-    background-color: whitesmoke;
-    border-radius: 50px;
-    overflow: hidden;
-    transition: 0.5s;
-    box-shadow: 0 0 20px 2px var(--search-shadow-color);
-}
-
-.search-box:hover {
-    width: 150px;
-}
-
-.input-box:hover,
-.search-box:hover {
-    width: 150px;
-}
-
-.input-box input,
-.search-box input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    padding: 0 55px 0 15px;
-    background-color: transparent;
-    outline: none;
-    box-sizing: border-box;
-}
-
-.input-box input::placeholder,
-.search-box input::placeholder {
-    color: #888;
-}
-
-.input-icon,
-.search-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
+/* Mobile Media Query */
 @media screen and (max-width: 650px) {
     /* Hide desktop controls */
     .desktop-controls {
@@ -283,17 +273,16 @@ img {
         height: auto !important;
         min-height: 400px;
         padding: 15px;
-        font-size: 20px;
     }
 
     /* Adjust Pokemon card content for mobile */
-    .info h2 {
+    .pokemon-grid .box #info h3 {
         font-size: 14px;
         margin: 5px 0;
         line-height: 1.4;
     }
 
-    #nameAndId h2 {
+    .pokemon-grid .box #nameAndId h3 {
         font-size: 16px;
     }
 
