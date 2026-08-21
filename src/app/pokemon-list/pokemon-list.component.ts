@@ -219,16 +219,21 @@ export class PokemonListComponent implements OnInit {
 
     async navigateToPokedex(): Promise<void> {
         let pokemonId = this.pokemonIDName;
-        const idPattern = /^[1-9][0-9]{0,5}$/; // Matches numbers from 1 to 99,999
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const idPattern = /^[1-9][0-9]{0,5}$/; // Matches numbers from 1 to 99_999
         const isNumeric = /^\d+$/.test(pokemonId);
 
         if (isNumeric) {
-            if (!idPattern.test(pokemonId)) {
+            if (!idPattern.test(pokemonId) && !isMobile) {
                 alert("Pok\u00e9mon not found. Please check the ID and try again.");
                 return;
+            } else {
+                return;
             }
-        } else if (pokemonId === '') {
+        } else if (pokemonId === undefined && !isMobile) {
             alert('Pok\u00e9mon not found. Please check the Name and try again.');
+            return;
+        } else {
             return;
         }
         if (pokemonId === 'deoxys') {
