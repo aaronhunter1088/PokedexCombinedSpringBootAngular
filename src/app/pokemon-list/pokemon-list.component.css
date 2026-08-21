@@ -94,7 +94,7 @@ img {
 
 .input-box,
 .search-box {
-    --search-shadow-color: #76147D;
+    --search-shadow-color: gray;
     position: relative;
     width: 50px;
     height: 50px;
@@ -151,8 +151,8 @@ img {
 }
  */
 .back-to-landing-btn {
-    --search-shadow-color: #76147D;
-    background-color: var(--search-shadow-color, #76147D);
+    --search-shadow-color: gray;
+    background-color: var(--search-shadow-color, gray);
     color: white;
     border: none;
     padding: 10px 15px;
