@@ -1,6 +1,6 @@
 {
   "name": "pokedexapiui",
-  "version": "1.6.3",
+  "version": "1.6.5",
   "scripts": {
     "ng": "ng",
     "npx": "npx",
