@@ -51,7 +51,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-Run `ng build-server` to build the project for server-side rendering. The build artifacts will be 
+Run `deployCombinedAppForServer` to build the project for server-side rendering. The built artifacts will be 
 stored in the `dist/` directory. The pokedexapiui folder will contain a /broswer directory. That
 is what will be uploaded to the server. All files inside will be extracted and moved into the
 /combined directory.
@@ -61,6 +61,8 @@ This should successfully upload all the files inside the pokedexapiui folder to 
 in the /browser directory and move them up one level to the /combined directory. 
 Delete the pokedexapiui folder and the browser folder.
 The server will need to be configured to serve the files in the combined directory.
+
+We now have a GitHub Action to deploy and revert to the previous version. Use those action.
 
 ## Running unit tests
 
