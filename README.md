@@ -2,7 +2,7 @@
 
 <img src="src/assets/images/combo-springboot-homepage.png" alt="Spring Boot Homepage" width="420" /> <img src="src/assets/images/combo-angular-homepage.png" alt="Angular Homepage" width="420" />
 
-[![Deploy Pokédex Combined with Angular and Spring Boot](https://github.com/aaronhunter1088/PokedexCombinedSpringBootAngular/actions/workflows/pokedex-combined-deploy.yml/badge.svg)](https://github.com/aaronhunter1088/PokedexCombinedSpringBootAngular/actions/workflows/pokedex-combined-deploy.yml)
+[![Deploy Pokédex Combined with Angular and Spring Boot](https://github.com/aaronhunter1088/PokedexCombinedSpringBootAngular/actions/workflows/pokedex-combined-deploy.yml/badge.svg)](https://github.com/aaronhunter1088/PokedexCombinedSpringBootAngular/actions/workflows/pokedex-combined-deploy.yml) [![Dependabot Updates](https://github.com/aaronhunter1088/PokedexCombinedSpringBootAngular/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/aaronhunter1088/PokedexCombinedSpringBootAngular/actions/workflows/dependabot/dependabot-updates)
 
 #### Versions
 
