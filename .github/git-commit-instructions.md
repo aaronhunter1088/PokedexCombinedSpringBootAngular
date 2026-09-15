@@ -7,7 +7,8 @@ Format:
 
 Types:
 - feature/a_new_feature
-- fix/a_bug_fix
+- defect/a_bug_fix
+- deps/a_dependency_update
 
 Summary:
 - A brief description of the change, separated by underscores, in all lowercase characters.
@@ -20,4 +21,5 @@ Rules for Summary Line:
 
 Examples:
 feature/add_hexadecimal_conversion_support
-fix/prevent_divide_by_zero_exception
+defect/prevent_divide_by_zero_exception
+deps/update_spring_boot_to_4_2_0_M1
