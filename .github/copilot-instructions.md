@@ -6,11 +6,11 @@ PokedexApiUI is an Angular-based front-end application for the PokedexApi projec
 
 ### Technology Stack
 
-- **Framework**: Angular 20.3.15
-- **Language**: TypeScript 5.8.3
-- **Build Tool**: Angular CLI 20.3.13
-- **Node Version**: 24.12.0
-- **Package Manager**: npm 11.6.2
+- **Framework**: Angular 20.x
+- **Language**: TypeScript 5.x
+- **Build Tool**: Angular CLI 20.x
+- **Node Version**: 24.x
+- **Package Manager**: npm 11.x
 - **Testing**: Jasmine + Karma
 - **UI Components**: Angular Material
 - **State Management**: RxJS 7.5.0
