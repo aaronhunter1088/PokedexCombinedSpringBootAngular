@@ -281,11 +281,10 @@ export class PokemonListComponent implements OnInit {
      * Handles type selection from the mobile menu by delegating to the existing
      * filtering logic, ensuring pagination retains the type filter.
      */
-    // async onMobileTypeSelected(selectedType: string) {
-    //     this.showLoadingOverlay();
-    //     await this.filterByType(selectedType);
-    //     return selectedType;
-    // }
+    async onMobileTypeSelected(selectedType: string): Promise<string> {
+        this.showLoadingOverlay();
+        return selectedType;
+    }
 
     // async filterByType(selectedType: string) {
     //     console.log("filterByType: " + selectedType);

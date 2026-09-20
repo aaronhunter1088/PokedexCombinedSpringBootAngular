@@ -72,7 +72,7 @@ export class MobileMenuComponent implements OnInit {
         document.body.style.overflow = '';
     }
 
-    async navigateToPokedex() {
+    async navigateToPokedex(): Promise<void> {
         let pokemonId = this.pokemonNameID;
         const idPattern = /^[1-9][0-9]{0,3}$/; // Matches numbers from 1 to 9999
         const isNumeric = /^\d+$/.test(pokemonId);
@@ -89,17 +89,13 @@ export class MobileMenuComponent implements OnInit {
         if (pokemonId === 'deoxys') {
             pokemonId = 'deoxys-normal';
         }
-        if (pokemonId !== undefined) {
-            let pokemon = this.pokemonService.getPokemonByName(pokemonId);
-            if (pokemon) {
-                pokemonId = await pokemon.then(pkmn => {
-                    return pkmn.id.toString();
-                });
-            } else if (!pokemon) {
-                alert('Pok\u00e9mon not found. Please check the Name and try again.');
-                return;
-            }
+        const pokemon = await this.pokemonService.getPokemonByName(pokemonId);
+        if (!pokemon || !('id' in pokemon) ||
+            (typeof pokemon.id !== 'number' && typeof pokemon.id !== 'string')) {
+            alert('Pok\u00e9mon not found. Please check the Name and try again.');
+            return;
         }
+        pokemonId = pokemon.id.toString();
         console.log("searched for pokemonId: " + pokemonId);
         this.router.navigate(['/pokedex', pokemonId])
             .then(() => this.closeMobileMenu());
