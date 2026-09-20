@@ -74,31 +74,38 @@ export class MobileMenuComponent implements OnInit {
 
     async navigateToPokedex(): Promise<void> {
         let pokemonId = this.pokemonNameID;
-        const idPattern = /^[1-9][0-9]{0,3}$/; // Matches numbers from 1 to 9999
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const idPattern = /^[1-9][0-9]{0,5}$/; // Matches numbers from 1 to 99_999
         const isNumeric = /^\d+$/.test(pokemonId);
 
         if (isNumeric) {
-            if (!idPattern.test(pokemonId)) {
-                alert("Please enter a valid Pokemon ID (1-9999)");
+            if (!idPattern.test(pokemonId) && !isMobile) {
+                alert("Pok\u00e9mon not found. Please check the ID and try again.");
                 return;
             }
-        } else if (!pokemonId) {
+        } else if ((pokemonId === undefined || pokemonId.trim() === '') && !isMobile) {
             alert('Pok\u00e9mon not found. Please check the Name and try again.');
             return;
         }
         if (pokemonId === 'deoxys') {
             pokemonId = 'deoxys-normal';
         }
-        const pokemon = await this.pokemonService.getPokemonByName(pokemonId);
-        if (!pokemon || !('id' in pokemon) ||
-            (typeof pokemon.id !== 'number' && typeof pokemon.id !== 'string')) {
-            alert('Pok\u00e9mon not found. Please check the Name and try again.');
+        try {
+            const pokemon = await this.pokemonService.getPokemonByName(pokemonId);
+            if (pokemon && pokemonId) {
+                pokemonId = pokemonId.toString();
+            }
+        } catch (error) {
+            console.error('Failed to fetch Pok\u00e9mon data for: ' + pokemonId, error);
+            alert('Pok\u00e9mon not found. Please check the ID or Name and try again.');
             return;
         }
-        pokemonId = pokemon.id.toString();
         console.log("searched for pokemonId: " + pokemonId);
-        this.router.navigate(['/pokedex', pokemonId])
-            .then(() => this.closeMobileMenu());
+        this.router.navigate(['pokedex', pokemonId])
+            .then(() => {
+                // Clear the search input after navigation
+                this.pokemonNameID = '';
+            });
     }
 
     onInput(pokemonNameID: string) {
