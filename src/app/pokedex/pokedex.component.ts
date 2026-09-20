@@ -69,7 +69,9 @@ export class PokedexComponent implements OnInit, OnChanges, OnDestroy {
       const pokemonIdOrName = params['pokemonID'];
 
       if (pokemonIdOrName !== undefined) {
-        this.loadPokemon(pokemonIdOrName).then(r => {});
+        this.loadPokemon(pokemonIdOrName).then(r => {
+          this.cdr.detectChanges();
+        });
       }
     });
   }
