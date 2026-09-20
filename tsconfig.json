@@ -5,6 +5,7 @@
     "types": [],
     "skipLibCheck": true,
     "baseUrl": "./",
+    "ignoreDeprecations": "6.0",
     "esModuleInterop": true,
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

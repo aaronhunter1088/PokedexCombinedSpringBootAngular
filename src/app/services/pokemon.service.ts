@@ -20,11 +20,11 @@ export class PokemonService
     constructor(protected http: HttpClient) {
     }
 
-    getPokemonList(_limit: number, _offset: number): Promise<NamedAPIResourceList> {
+    getPokemonList(_limit: number, _offset: number): Promise<any> {
         return this.callURL(this.hostUrl + "/pokemon?limit=" + _limit + "&offset=" + _offset);
     }
 
-    async getTotalPokemon(pokedexId: string): Promise<number> {
+    async getTotalPokemon(pokedexId: string): Promise<any> {
         const url = this.hostUrl + "/pokedex/" + (pokedexId ?? "1");
         //console.log("Getting total Pokemon at: ", url);
         const totalPokemon = await this.callURL(url).then((response => { return response; }));
@@ -33,7 +33,7 @@ export class PokemonService
         return totalPokemon;
     }
 
-    async getPokemonSpecificData(pokemonName: string | number): Promise<Pokemon> {
+    async getPokemonSpecificData(pokemonName: string | number): Promise<any> {
         //return this.servicePokedex.getPokemonByName(pokemonName);
         //console.log("Calling getPokemonSpecificData for: ", pokemonName);
         return await this.callURL(this.hostUrl + "/pokemon/" + pokemonName);
@@ -148,11 +148,11 @@ export class PokemonService
         }
     }
 
-    async getPokemonLocationEncounters(locationAreaEncounterUrl: string): Promise<object> {
-        return await this.callURL(locationAreaEncounterUrl);
+    async getPokemonLocationEncounters(locationAreaEncounterUrl: string): Promise<any> {
+        await this.callURL(locationAreaEncounterUrl);
     }
 
-    async getPokemonChainData(pokemonChainID: string): Promise<object> {
+    async getPokemonChainData(pokemonChainID: string): Promise<any> {
         return await this.callURL(this.hostUrl + "/evolution/evolution-chain/" + pokemonChainID);
     }
 
@@ -166,19 +166,22 @@ export class PokemonService
             });
     }
 
-    async callURL(url: any, interval: any = {}): Promise<any> {
-        let prodBase = "https://pokeapi.co/api/v2";
-        if (url.startsWith(prodBase)) {
-            url = this.hostUrl + url.split(prodBase)[1];
-            //console.debug("URL converted to local API URL", url);
-        }
-        //console.log("calling URL: ", url);
-        return new Promise((resolve, reject) => {
-            this.http.get(url, {params: interval}).subscribe({
-                next: (res) => resolve(res),
-                error: (err) => reject(err)
-            });
-        });
+    // async callURL(url: any, interval: any = {}): Promise<any> {
+    //     let prodBase = "https://mypokedex.us/springboot";//"https://pokeapi.co/api/v2";
+    //     if (url.startsWith(prodBase)) {
+    //         url = this.hostUrl + url.split(prodBase)[1];
+    //         //console.debug("URL converted to local API URL", url);
+    //     }
+    //     //console.log("calling URL: ", url);
+    //     return new Promise((resolve, reject) => {
+    //         this.http.get(url, {params: interval}).subscribe({
+    //             next: (res) => resolve(res),
+    //             error: (err) => reject(err)
+    //         });
+    //     });
+    // }
+    callURL(url: any): Promise<object | undefined> {
+        return this.http.get(url).toPromise();
     }
 
     saveCurrentPage(page: number) {

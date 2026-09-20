@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PokemonService} from "../services/pokemon.service";
-import {DarkModeService} from "../services/dark-mode.service";
 import {Router} from "@angular/router";
+import {DarkModeService} from "../services/dark-mode.service";
 
 @Component({
     selector: 'app-search',
@@ -123,8 +123,8 @@ export class SearchComponent implements OnInit {
         }
         try {
             const pokemon = await this.pokemonService.getPokemonByName(pokemonId);
-            if (pokemon && pokemon.id) {
-                pokemonId = pokemon.id.toString();
+            if (pokemon && pokemonId) {
+                pokemonId = pokemonId.toString();
             }
         } catch (error) {
             console.error('Failed to fetch Pok\u00e9mon data for: ' + pokemonId, error);

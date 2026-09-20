@@ -11,7 +11,7 @@
 - Angular CLI: 20.x
 - TypeScript: 5.x (version check: npx tsc -v)
 - Node: 24.x (node -v)
-- Package Manager: npm 11.x (npm -v)
+- Package Manager: npm 12.x (npm -v)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
 This project works specifically with the PokedexApi project. This is the front end
