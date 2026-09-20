@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {NamedAPIResourceList, Pokedex, Pokemon, PokemonSpecies} from "pokeapi-js-wrapper";
 import {environment} from "../../environments/environment";
+import {firstValueFrom} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -148,8 +149,8 @@ export class PokemonService
         }
     }
 
-    async getPokemonLocationEncounters(locationAreaEncounterUrl: string): Promise<any> {
-        await this.callURL(locationAreaEncounterUrl);
+    getPokemonLocationEncounters(pokemonId: string | number): Promise<object | undefined> {
+        return this.callURL(this.hostUrl + "/pokemon/" + pokemonId + "/encounters");
     }
 
     async getPokemonChainData(pokemonChainID: string): Promise<any> {
@@ -166,22 +167,8 @@ export class PokemonService
             });
     }
 
-    // async callURL(url: any, interval: any = {}): Promise<any> {
-    //     let prodBase = "https://mypokedex.us/springboot";//"https://pokeapi.co/api/v2";
-    //     if (url.startsWith(prodBase)) {
-    //         url = this.hostUrl + url.split(prodBase)[1];
-    //         //console.debug("URL converted to local API URL", url);
-    //     }
-    //     //console.log("calling URL: ", url);
-    //     return new Promise((resolve, reject) => {
-    //         this.http.get(url, {params: interval}).subscribe({
-    //             next: (res) => resolve(res),
-    //             error: (err) => reject(err)
-    //         });
-    //     });
-    // }
     callURL(url: any): Promise<object | undefined> {
-        return this.http.get(url).toPromise();
+        return firstValueFrom(this.http.get<object>(url));
     }
 
     saveCurrentPage(page: number) {
