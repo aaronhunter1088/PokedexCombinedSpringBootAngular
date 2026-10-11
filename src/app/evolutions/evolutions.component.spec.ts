@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {EvolutionsComponent} from './evolutions.component';
+import {provideRouter} from '@angular/router';
 
 describe('EvolutionsComponent', () => {
     let component: EvolutionsComponent;
@@ -8,7 +8,8 @@ describe('EvolutionsComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [EvolutionsComponent]
+            declarations: [EvolutionsComponent],
+            providers: [provideRouter([])]
         })
             .compileComponents();
 
