@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnChanges {
 
     currentRoute: string;
     previousRoute: string;
-    title = 'PokedexHome'
+    title = 'PokedexCombined';
 
     constructor(
         private router: Router,

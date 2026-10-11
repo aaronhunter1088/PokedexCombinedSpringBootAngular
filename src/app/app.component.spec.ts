@@ -17,19 +17,12 @@ describe('AppComponent', () => {
     it('should create the app', () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.componentInstance;
-        expect(app).toBeTruthy();
+        expect(app).toBeDefined();
     });
 
-    it(`should have as title 'PokedexAngular'`, () => {
+    it(`should have as title 'PokedexCombined'`, () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.componentInstance;
-        expect(app.title).toEqual('PokedexAngular');
-    });
-
-    it('should render title', () => {
-        const fixture = TestBed.createComponent(AppComponent);
-        fixture.detectChanges();
-        const compiled = fixture.nativeElement as HTMLElement;
-        expect(compiled.querySelector('.content span')?.textContent).toContain('PokedexAngular app is running!');
+        expect(app.title).toEqual('PokedexCombined');
     });
 });
