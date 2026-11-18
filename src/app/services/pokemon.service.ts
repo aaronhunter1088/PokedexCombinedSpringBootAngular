@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {NamedAPIResourceList, Pokedex, Pokemon, PokemonSpecies} from "pokeapi-js-wrapper";
 import {environment} from "../../environments/environment";
 import {firstValueFrom} from "rxjs";
 
@@ -40,7 +39,7 @@ export class PokemonService
         return await this.callURL(this.hostUrl + "/pokemon/" + pokemonName);
     }
 
-    getPokemonByName(pokemonIDName: string | number) {
+    getPokemonByName(pokemonIDName: string | number): Promise<any> {
         //console.log("Calling getPokemonByName for: ", pokemonIDName);
         return this.callURL(this.hostUrl + "/pokemon/" + pokemonIDName);
     }
@@ -89,15 +88,15 @@ export class PokemonService
         if (this.allPokemon.length === 0) {
             let pokemonList = await this.getPokemonList(limit, offset)
                 .then((pokemonListData => { return pokemonListData }))
-            let pokemon: Pokemon;
-            let species: PokemonSpecies;
+            let pokemon: any;
+            let species: any;
             console.log('Pokemon list results: ', pokemonList?.results?.length ?? 0);
             // @ts-ignore
             for (const p of pokemonList['results']) {
-                pokemon = <Pokemon>await this.getPokemonSpecificData(p.name).then((pokemonData => {
+                pokemon = await this.getPokemonSpecificData(p.name).then(((pokemonData: any) => {
                     return pokemonData
                 }));
-                species = <PokemonSpecies>await this.getPokemonSpeciesData(pokemon).then((speciesData => {
+                species = await this.getPokemonSpeciesData(pokemon).then(((speciesData: any) => {
                     return speciesData
                 }));
 
