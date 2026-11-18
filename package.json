@@ -1,6 +1,6 @@
 {
   "name": "pokedexapiui",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "scripts": {
     "ng": "ng",
     "startCombinedApp": "ng serve",
@@ -28,7 +28,7 @@
   "private": true,
   "packageManager": "npm@12.0.2",
   "dependencies": {
-    "@angular/animations": "22.2.4",
+    "@angular/animations": "22.2.5",
     "@angular/cdk": "^22.2.7",
     "@angular/common": "22.2.5",
     "@angular/compiler": "22.2.5",
@@ -36,7 +36,7 @@
     "@angular/forms": "22.2.5",
     "@angular/material": "^22.2.7",
     "@angular/platform-browser": "22.2.5",
-    "@angular/platform-browser-dynamic": "22.2.4",
+    "@angular/platform-browser-dynamic": "22.2.5",
     "@angular/router": "22.2.5",
     "ng": "^0.0.0",
     "ngx-order-pipe": "^3.0.0",
@@ -55,7 +55,7 @@
     "jasmine-core": "~7.0.2",
     "jsdom": "^31.0.0",
     "playwright": "^1.65.0",
-    "typescript": "7.0.2",
+    "typescript": "~6.0.0",
     "vitest": "^5.0.3"
   },
   "allowScripts": {
