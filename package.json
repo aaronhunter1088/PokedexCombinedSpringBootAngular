@@ -5,6 +5,8 @@
     "ng": "ng",
     "startCombinedApp": "ng serve",
     "startCombinedAppAndMobile": "ng serve --host 0.0.0.0",
+    "startCombinedAppProdLocal": "ng serve --configuration localprod",
+    "startCombinedAppAndMobileProdLocal": "ng serve --configuration localprod --host 0.0.0.0",
     "installCombinedApp": "npm install --force",
     "cleanInstall": "npm ci",
     "deployCombinedAppForServer": "ng build --base-href /combined/ --deploy-url /combined/",
