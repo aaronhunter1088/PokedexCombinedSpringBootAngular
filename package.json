@@ -1,6 +1,6 @@
 {
   "name": "pokedexapiui",
-  "version": "1.10.3",
+  "version": "1.11.0",
   "scripts": {
     "ng": "ng",
     "startCombinedApp": "ng serve",
