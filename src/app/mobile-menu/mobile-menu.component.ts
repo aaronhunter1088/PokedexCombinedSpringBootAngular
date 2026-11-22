@@ -73,17 +73,16 @@ export class MobileMenuComponent implements OnInit {
     }
 
     async navigateToPokedex(): Promise<void> {
-        let pokemonId = this.pokemonNameID;
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        const idPattern = /^[1-9][0-9]{0,5}$/; // Matches numbers from 1 to 99_999
+        let pokemonId = this.pokemonNameID?.toLowerCase()?.trim();
+        const idPattern = /^[1-9][0-9]{0,5}$/; // Matches numbers from 1 to 999,999
         const isNumeric = /^\d+$/.test(pokemonId);
 
         if (isNumeric) {
-            if (!idPattern.test(pokemonId) && !isMobile) {
+            if (!idPattern.test(pokemonId)) {
                 alert("Pok\u00e9mon not found. Please check the ID and try again.");
                 return;
             }
-        } else if ((pokemonId === undefined || pokemonId.trim() === '') && !isMobile) {
+        } else if (!pokemonId) {
             alert('Pok\u00e9mon not found. Please check the Name and try again.');
             return;
         }
@@ -92,9 +91,10 @@ export class MobileMenuComponent implements OnInit {
         }
         try {
             const pokemon = await this.pokemonService.getPokemonByName(pokemonId);
-            if (pokemon && pokemonId) {
-                pokemonId = pokemonId.toString();
+            if (!pokemon?.id) {
+                throw new Error('Pok\u00e9mon not found');
             }
+            pokemonId = pokemon.id.toString();
         } catch (error) {
             console.error('Failed to fetch Pok\u00e9mon data for: ' + pokemonId, error);
             alert('Pok\u00e9mon not found. Please check the ID or Name and try again.');
@@ -103,8 +103,8 @@ export class MobileMenuComponent implements OnInit {
         console.log("searched for pokemonId: " + pokemonId);
         this.router.navigate(['pokedex', pokemonId])
             .then(() => {
-                // Clear the search input after navigation
                 this.pokemonNameID = '';
+                this.closeMobileMenu();
             });
     }
 
