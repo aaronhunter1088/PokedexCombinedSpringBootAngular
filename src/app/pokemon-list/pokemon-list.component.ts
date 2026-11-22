@@ -490,7 +490,7 @@ export class PokemonListComponent implements OnInit {
         try {
             this.pokemonMap.clear();
             const pokemonListResponse = await this.pokemonService
-                .getPokemonList(this.pkmnPerPage, (this.page - 1) * this.pkmnPerPage);
+                .getPokemonList(this.pkmnPerPage, this.page - 1);
 
             this.numberOfPokemon = pokemonListResponse.count;
             console.log("numberOfPokemon: ", this.numberOfPokemon);

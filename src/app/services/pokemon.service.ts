@@ -109,7 +109,7 @@ export class PokemonService
 
     async collectPokemonData(numberOfPokemon: number) {
         console.log("Collecting Pokemon data...");
-        let offset = (this.savedPageNumber - 1) * this.pkmnPerPage;
+        const offset = this.savedPageNumber - 1;
         const limit = numberOfPokemon;
         //const limit = this.pkmnPerPage;
         if (this.allPokemon.length === 0) {
